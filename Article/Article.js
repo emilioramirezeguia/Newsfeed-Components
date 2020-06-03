@@ -151,9 +151,19 @@ function articleMaker(article) {
   return articleDiv;
 }
 
+// Create a custom article and push it into the array
+const emiliosArticle = {
+  title: "JavaScript superpowers",
+  date: "June 3rd, 2020",
+  firstParagraph: "I'm the first paragraph.",
+  secondParagraph: "I'm the second paragraph.",
+  thirdParagraph: "I'm the third paragraph.",
+};
+
+data.push(emiliosArticle);
+
 data.forEach(function (article, index) {
   const articles = document.querySelector(".articles");
   const newArticle = articleMaker(article);
-  console.log(newArticle);
   articles.append(newArticle);
 });
