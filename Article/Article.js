@@ -122,6 +122,9 @@ function articleMaker(article) {
   const articleThirdP = document.createElement("p");
   const articleSpan = document.createElement("span");
 
+  // Stretch element
+  const articleDelete = document.createElement("span");
+
   // Then nest those elements appropriately
   articleDiv.appendChild(articleTitle);
   articleDiv.appendChild(articleDate);
@@ -129,6 +132,9 @@ function articleMaker(article) {
   articleDiv.appendChild(articleSecondP);
   articleDiv.appendChild(articleThirdP);
   articleDiv.appendChild(articleSpan);
+
+  // Stretch delete span element
+  articleDiv.appendChild(articleDelete);
 
   // Match corresponding data from the data object to the HTML elements
   articleTitle.textContent = article.title;
@@ -138,14 +144,25 @@ function articleMaker(article) {
   articleThirdP.textContent = article.thirdParagraph;
   articleSpan.textContent = "Read more...";
 
+  // Stretch delete element content
+  articleDelete.textContent = "X";
+
   // Add corresponding classes where needed
   articleDiv.classList.add("article");
   articleDate.classList.add("date");
   articleSpan.classList.add("expandButton");
 
+  // Stretch delete element class
+  articleDelete.classList.add("delete");
+
   // Add click event to expandButton span
   articleSpan.addEventListener("click", function (event) {
     articleDiv.classList.toggle("article-open");
+  });
+
+  // Stretch click event to delete article when clicking on the 'X'
+  articleDelete.addEventListener("click", function (event) {
+    articleDiv.remove();
   });
 
   return articleDiv;
@@ -162,7 +179,7 @@ const emiliosArticle = {
 
 data.push(emiliosArticle);
 
-data.forEach(function (article, index) {
+data.forEach(function (article) {
   const articles = document.querySelector(".articles");
   const newArticle = articleMaker(article);
   articles.append(newArticle);

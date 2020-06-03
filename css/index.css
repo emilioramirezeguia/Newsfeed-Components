@@ -73,6 +73,13 @@
   transform: translate(-50%);
   background-color: white;
 }
+.article .delete {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  cursor: pointer;
+  padding: 0.5%;
+}
 .article-open {
   height: 400px;
 }
